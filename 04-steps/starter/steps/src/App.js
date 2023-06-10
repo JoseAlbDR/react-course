@@ -54,12 +54,14 @@ function Steps() {
               bgColor="#7950f2"
               onClick={handlePrevious}
               text="Previous"
+              emoji="👈"
             />
             <Button
               textColor="#fff"
               bgColor="#7950f2"
               onClick={handleNext}
               text="Next"
+              emoji="👉"
             />
           </div>
         </div>
@@ -68,12 +70,13 @@ function Steps() {
   );
 }
 
-function Button({ textColor, bgColor, onClick, text }) {
+function Button({ textColor, bgColor, onClick, text, emoji }) {
   return (
     <button
       onClick={onClick}
       style={{ backgroundColor: bgColor, color: textColor }}
     >
+      <span>{emoji}</span>
       {text}
     </button>
   );
