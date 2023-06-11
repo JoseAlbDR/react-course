@@ -1,6 +1,6 @@
 import Friend from "./Friend";
 import Button from "./Button";
-import AddFriend from "./AddFriend";
+import AddFriend from "./AddFriendForm";
 import { useState } from "react";
 
 const initialFriends = [
@@ -26,10 +26,11 @@ const initialFriends = [
 
 function App() {
   const [friends, setFriends] = useState(initialFriends);
-  const [showAddFriend, setShowAddFriend] = useState(false);
+  const [showAddFriendForm, setShowAddFriendForm] = useState(false);
+  const [showSplitForm, setSplitForm] = useState(false);
 
-  function handleShowAddFriend() {
-    setShowAddFriend(!showAddFriend);
+  function handleShowAddFriendForm() {
+    setShowAddFriendForm(!showAddFriendForm);
   }
 
   function handleAddFriend(friend) {
@@ -37,23 +38,28 @@ function App() {
   }
 
   return (
-    <div className="sidebar">
-      <ul>
-        {friends.map((friend, index) => (
-          <li key={index}>
-            <Friend friend={friend} />
-          </li>
-        ))}
-      </ul>
+    <div className="app">
+      <div className="sidebar">
+        <ul>
+          {friends.map((friend, index) => (
+            <li key={index}>
+              <Friend friend={friend} />
+            </li>
+          ))}
+        </ul>
 
-      {!showAddFriend ? (
-        <Button onClick={handleShowAddFriend}>Add friend</Button>
-      ) : (
-        <>
-          <AddFriend />
-          <Button onClick={handleShowAddFriend}>Close</Button>
-        </>
-      )}
+        {!showAddFriendForm ? (
+          <Button onClick={handleShowAddFriendForm}>Add friend</Button>
+        ) : (
+          <>
+            <AddFriend
+              onAddFriend={handleAddFriend}
+              onShowForm={handleShowAddFriendForm}
+            />
+            <Button onClick={handleShowAddFriendForm}>Close</Button>
+          </>
+        )}
+      </div>
     </div>
   );
 }
