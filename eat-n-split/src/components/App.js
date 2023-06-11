@@ -1,5 +1,6 @@
 import Friend from "./Friend";
 import Button from "./Button";
+import AddFriend from "./AddFriend";
 import { useState } from "react";
 
 const initialFriends = [
@@ -25,6 +26,11 @@ const initialFriends = [
 
 function App() {
   const [friends, setFriends] = useState(initialFriends);
+  const [showAddFriend, setShowAddFriend] = useState(false);
+
+  function handleShowAddFriend() {
+    setShowAddFriend(!showAddFriend);
+  }
 
   function handleAddFriend(friend) {
     setFriends((friends) => [...friends, friend]);
@@ -39,7 +45,15 @@ function App() {
           </li>
         ))}
       </ul>
-      <Button onAddFriend={handleAddFriend}>Add friend</Button>
+
+      {!showAddFriend ? (
+        <Button onClick={handleShowAddFriend}>Add friend</Button>
+      ) : (
+        <>
+          <AddFriend />
+          <Button onClick={handleShowAddFriend}>Close</Button>
+        </>
+      )}
     </div>
   );
 }
