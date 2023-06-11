@@ -2,7 +2,8 @@ export default function Input({
   label,
   type,
   value,
-  fn,
+  placeholder = "",
+  fn = null,
   dis = false,
   req = false,
 }) {
@@ -12,10 +13,11 @@ export default function Input({
       <input
         type={type}
         value={value}
-        placeholder="0"
-        onChange={(e) => fn(+e.target.value)}
+        placeholder={placeholder}
+        onChange={fn ? (e) => fn(e.target.value) : null}
         disabled={dis}
-      />
+        required={req}
+      ></input>
     </>
   );
 }

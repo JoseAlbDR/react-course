@@ -1,4 +1,5 @@
 import Button from "./Button";
+import Input from "./Input";
 import { useState } from "react";
 
 export default function FriendForm({ onAddFriend, onShowForm }) {
@@ -28,21 +29,21 @@ export default function FriendForm({ onAddFriend, onShowForm }) {
 
   return (
     <form className="form-add-friend" onSubmit={handleSubmit}>
-      <label>👫Name</label>
-      <input
+      <Input
+        label={"👫Name"}
         type="text"
         placeholder="Friend Name"
         value={name}
-        onChange={(e) => setName(e.target.value)}
-        required={true}
-      ></input>
-      <label>🌇Image URL</label>
-      <input
+        fn={setName}
+        req={true}
+      />
+      <Input
+        label="🌇Image URL"
         type="text"
         placeholder="Random if empty"
         value={image}
-        onChange={(e) => setImage(e.target.value)}
-      ></input>
+        fn={setImage}
+      />
       <Button>Add</Button>
     </form>
   );

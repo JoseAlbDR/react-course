@@ -6,9 +6,10 @@ export default function FriendForm({ friend, onSplitForm, onShowForm }) {
   const [billValue, setBillValue] = useState(0);
   const [myExpense, setMyExpense] = useState(0);
   const [whoPays, setWhoPays] = useState("You");
-  const friendExpense = billValue - myExpense;
+
+  const friendExpense = +billValue - +myExpense;
   const amount =
-    whoPays === "You" ? billValue - myExpense : billValue - friendExpense;
+    whoPays === "You" ? +billValue - +myExpense : +friendExpense - +billValue;
 
   function handleSplitForm(event) {
     event.preventDefault();

@@ -33,10 +33,14 @@ function App() {
 
   function handleShowAddFriendForm() {
     setShowAddFriendForm(!showAddFriendForm);
+    setShowSplitForm(showSplitForm ? !showSplitForm : showSplitForm);
   }
 
   function handleShowSplitForm(friend) {
     setShowSplitForm(!showSplitForm);
+    setShowAddFriendForm(
+      showAddFriendForm ? !showAddFriendForm : showAddFriendForm
+    );
     setSelectedFriend(friend);
   }
 
