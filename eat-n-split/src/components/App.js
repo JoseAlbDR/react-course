@@ -27,19 +27,19 @@ const initialFriends = [
 
 function App() {
   const [friends, setFriends] = useState(initialFriends);
-  const [showAddFriendForm, setShowAddFriendForm] = useState(false);
-  const [showSplitForm, setShowSplitForm] = useState(false);
+  const [toggleAddFriendForm, setToggleAddFriendForm] = useState(false);
+  const [toggleSplitForm, setToggleSplitForm] = useState(false);
   const [selectedFriend, setSelectedFriend] = useState("");
 
-  function handleShowAddFriendForm() {
-    setShowAddFriendForm(!showAddFriendForm);
-    setShowSplitForm(showSplitForm ? !showSplitForm : showSplitForm);
+  function handleToggleAddFriendForm() {
+    setToggleAddFriendForm(!toggleAddFriendForm);
+    setToggleSplitForm(toggleSplitForm ? !toggleSplitForm : toggleSplitForm);
   }
 
-  function handleShowSplitForm(friend) {
-    setShowSplitForm(!showSplitForm);
-    setShowAddFriendForm(
-      showAddFriendForm ? !showAddFriendForm : showAddFriendForm
+  function handleToggleSplitForm(friend) {
+    setToggleSplitForm(!toggleSplitForm);
+    setToggleAddFriendForm(
+      toggleAddFriendForm ? !toggleAddFriendForm : toggleAddFriendForm
     );
     setSelectedFriend(friend);
   }
@@ -64,9 +64,9 @@ function App() {
         <ul>
           {friends.map((friend, index) => (
             <li key={index}>
-              <Friend friend={friend} onClick={handleShowSplitForm} />
-              <Button onClick={() => handleShowSplitForm(friend)}>
-                {showSplitForm && selectedFriend.name === friend.name
+              <Friend friend={friend} onClick={handleToggleSplitForm} />
+              <Button onClick={() => handleToggleSplitForm(friend)}>
+                {toggleSplitForm && selectedFriend.name === friend.name
                   ? "Close"
                   : "Select"}
               </Button>
@@ -74,24 +74,24 @@ function App() {
           ))}
         </ul>
 
-        {!showAddFriendForm ? (
-          <Button onClick={handleShowAddFriendForm}>Add friend</Button>
+        {!toggleAddFriendForm ? (
+          <Button onClick={handleToggleAddFriendForm}>Add friend</Button>
         ) : (
           <>
             <FriendForm
               onAddFriend={handleAddFriend}
-              onShowForm={handleShowAddFriendForm}
+              onToggleForm={handleToggleAddFriendForm}
             />
-            <Button onClick={handleShowAddFriendForm}>Close</Button>
+            <Button onClick={handleToggleAddFriendForm}>Close</Button>
           </>
         )}
       </div>
       <>
-        {showSplitForm && (
+        {toggleSplitForm && (
           <SplitForm
             friend={selectedFriend}
-            onSplitForm={handleUpdateFriend}
-            onShowForm={setShowSplitForm}
+            onUpdateFriend={handleUpdateFriend}
+            onToggleForm={setToggleSplitForm}
           />
         )}
       </>

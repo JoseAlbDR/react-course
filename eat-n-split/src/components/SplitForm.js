@@ -2,7 +2,7 @@ import Button from "./Button";
 import Input from "./Input";
 import { useState } from "react";
 
-export default function FriendForm({ friend, onSplitForm, onShowForm }) {
+export default function FriendForm({ friend, onUpdateFriend, onToggleForm }) {
   const [billValue, setBillValue] = useState(0);
   const [myExpense, setMyExpense] = useState(0);
   const [whoPays, setWhoPays] = useState("You");
@@ -14,8 +14,8 @@ export default function FriendForm({ friend, onSplitForm, onShowForm }) {
   function handleSplitForm(event) {
     event.preventDefault();
     if (!billValue) return;
-    onSplitForm(friend.id, amount);
-    onShowForm(false);
+    onUpdateFriend(friend.id, amount);
+    onToggleForm(false);
   }
 
   return (

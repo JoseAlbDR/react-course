@@ -2,11 +2,10 @@ export default function Input({
   label,
   type,
   value,
-  placeholder = "",
+  placeholder = null,
   fn = null,
   dis = false,
   req = false,
-  min = 0,
 }) {
   return (
     <>
