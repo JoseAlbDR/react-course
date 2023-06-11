@@ -19,15 +19,15 @@ export default function App() {
       <Service tip={friendTip} onSetTip={setFriendTip}>
         How did your friend like the service?
       </Service>
-      {bill ? <Pay bill={bill} myTip={myTip} friendTip={friendTip} /> : ""}
-      {bill ? (
-        <Reset
-          onSetBill={setBill}
-          onSetMine={setMyTip}
-          onSetFriend={setFriendTip}
-        />
-      ) : (
-        ""
+      {bill > 0 && (
+        <>
+          <Pay bill={bill} myTip={myTip} friendTip={friendTip} />
+          <Reset
+            onSetBill={setBill}
+            onSetMine={setMyTip}
+            onSetFriend={setFriendTip}
+          />
+        </>
       )}
     </div>
   );
