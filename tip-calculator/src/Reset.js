@@ -1,8 +1,8 @@
-export default function Reset({ setBill, setMine, setFriend }) {
+export default function Reset({ onSetBill, onSetMine, onSetFriend }) {
   function resetValues() {
-    setBill(0);
-    setMine(0);
-    setFriend(0);
+    onSetBill(0);
+    onSetMine(0);
+    onSetFriend(0);
   }
 
   return <button onClick={resetValues}>Reset</button>;

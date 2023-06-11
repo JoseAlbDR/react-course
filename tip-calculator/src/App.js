@@ -12,16 +12,20 @@ export default function App() {
 
   return (
     <div className="App">
-      <Bill bill={bill} setBill={setBill} />
-      <Service tip={myTip} setTip={setMyTip}>
+      <Bill bill={bill} onSetBill={setBill} />
+      <Service tip={myTip} onSetTip={setMyTip}>
         How did you like the service?
       </Service>
-      <Service tip={friendTip} setTip={setFriendTip}>
+      <Service tip={friendTip} onSetTip={setFriendTip}>
         How did your friend like the service?
       </Service>
       {bill ? <Pay bill={bill} myTip={myTip} friendTip={friendTip} /> : ""}
       {bill ? (
-        <Reset setBill={setBill} setMine={setMyTip} setFriend={setFriendTip} />
+        <Reset
+          onSetBill={setBill}
+          onSetMine={setMyTip}
+          onSetFriend={setFriendTip}
+        />
       ) : (
         ""
       )}

@@ -1,13 +1,13 @@
-export default function Bill({ bill, setBill }) {
+export default function Bill({ bill, onSetBill }) {
   return (
     <div>
-      How much was the bill?
+      <label>How much was the bill?</label>
       <input
         type="number"
         min="0"
         placeholder={bill}
         value={bill}
-        onChange={(e) => setBill(+e.target.value)}
+        onChange={(e) => onSetBill(+e.target.value)}
       />
     </div>
   );
