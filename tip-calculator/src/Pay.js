@@ -5,11 +5,9 @@ export default function Pay({ bill, myTip, friendTip }) {
   const total = bill + average;
   return (
     <div>
-      {bill > 0 && (
-        <p>
-          You pay ${total} (${bill} + ${average} tip)
-        </p>
-      )}
+      <p>
+        You pay ${total} (${bill} + ${average} tip)
+      </p>
     </div>
   );
 }

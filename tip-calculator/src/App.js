@@ -1,6 +1,7 @@
 import Bill from "./Bill";
 import Service from "./Service";
 import Pay from "./Pay";
+import Reset from "./Reset";
 import "./App.css";
 import { useState } from "react";
 
@@ -18,7 +19,12 @@ export default function App() {
       <Service tip={friendTip} setTip={setFriendTip}>
         How did your friend like the service?
       </Service>
-      <Pay bill={bill} myTip={myTip} friendTip={friendTip} />
+      {bill ? <Pay bill={bill} myTip={myTip} friendTip={friendTip} /> : ""}
+      {bill ? (
+        <Reset setBill={setBill} setMine={setMyTip} setFriend={setFriendTip} />
+      ) : (
+        ""
+      )}
     </div>
   );
 }
