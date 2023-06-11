@@ -6,6 +6,7 @@ export default function Input({
   fn = null,
   dis = false,
   req = false,
+  min = 0,
 }) {
   return (
     <>
@@ -17,7 +18,8 @@ export default function Input({
         onChange={fn ? (e) => fn(e.target.value) : null}
         disabled={dis}
         required={req}
-      ></input>
+        min={type === "number" ? 0 : null}
+      />
     </>
   );
 }

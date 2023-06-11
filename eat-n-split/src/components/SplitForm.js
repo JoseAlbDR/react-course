@@ -13,6 +13,7 @@ export default function FriendForm({ friend, onSplitForm, onShowForm }) {
 
   function handleSplitForm(event) {
     event.preventDefault();
+    if (!billValue) return;
     onSplitForm(friend.id, amount);
     onShowForm(false);
   }
