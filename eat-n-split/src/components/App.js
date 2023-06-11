@@ -1,4 +1,6 @@
 import Friend from "./Friend";
+import Button from "./Button";
+
 const initialFriends = [
   {
     id: 118836,
@@ -30,6 +32,7 @@ function App() {
           </li>
         ))}
       </ul>
+      <Button>Add friend</Button>
     </div>
   );
 }
