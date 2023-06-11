@@ -1,35 +1,45 @@
 import Button from "./Button";
+import Input from "./Input";
 import { useState } from "react";
 
-export default function FriendForm({ friend }) {
+export default function FriendForm({ friend, onSplitForm, onShowForm }) {
   const [billValue, setBillValue] = useState(0);
   const [myExpense, setMyExpense] = useState(0);
-  const [friendExpense, setFriendExpense] = useState(0);
+  const [whoPays, setWhoPays] = useState("You");
+  const friendExpense = billValue - myExpense;
+  const amount =
+    whoPays === "You" ? billValue - myExpense : billValue - friendExpense;
+
+  function handleSplitForm(event) {
+    event.preventDefault();
+    onSplitForm(friend.id, amount);
+    onShowForm(false);
+  }
 
   return (
-    <form className="form-split-bill">
+    <form className="form-split-bill" onSubmit={handleSplitForm}>
       <h2>split a bill with {friend.name}</h2>
-      <label>💰 Bill value</label>
-      <input
+      <Input
+        label="💰 Bill value"
         type="number"
         value={billValue}
-        onChange={(e) => setBillValue(e.target.value)}
-      ></input>
-      <label>🧍‍♂️ Your expense:</label>
-      <input
+        fn={setBillValue}
+      />
+      <Input
+        label="🧍‍♂️ Your expense:"
         type="number"
         value={myExpense}
-        onChange={(e) => setMyExpense(e.target.value)}
-      ></input>
-      <label>👩🏻‍🤝‍🧑🏻 {friend.name} expense:</label>
-      <input
+        fn={setMyExpense}
+      />
+      <Input
+        label={`👩🏻‍🤝‍🧑🏻 ${friend.name} expense:`}
         type="number"
         value={friendExpense}
-        onChange={(e) => setFriendExpense(e.target.value)}
-      ></input>
+        dis={true}
+      />
       <label>🤑 Who is paying the bill?</label>
-      <select>
-        <option value="you">You</option>
+      <select onChange={(e) => setWhoPays(e.target.value)}>
+        <option value="You">You</option>
         <option value={friend.name}>{friend.name}</option>
       </select>
       <Button>Split bill</Button>

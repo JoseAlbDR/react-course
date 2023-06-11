@@ -34,7 +34,7 @@ export default function FriendForm({ onAddFriend, onShowForm }) {
         placeholder="Friend Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        required="true"
+        required={true}
       ></input>
       <label>🌇Image URL</label>
       <input

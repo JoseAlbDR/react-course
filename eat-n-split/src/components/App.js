@@ -44,6 +44,16 @@ function App() {
     setFriends((friends) => [...friends, friend]);
   }
 
+  function handleUpdateFriend(friendId, amount) {
+    setFriends((friends) =>
+      friends.map((friend) =>
+        friend.id === friendId
+          ? { ...friend, balance: friend.balance + amount }
+          : friend
+      )
+    );
+  }
+
   return (
     <div className="app">
       <div className="sidebar">
@@ -72,7 +82,15 @@ function App() {
           </>
         )}
       </div>
-      <>{showSplitForm && <SplitForm friend={selectedFriend} />}</>
+      <>
+        {showSplitForm && (
+          <SplitForm
+            friend={selectedFriend}
+            onSplitForm={handleUpdateFriend}
+            onShowForm={setShowSplitForm}
+          />
+        )}
+      </>
     </div>
   );
 }
