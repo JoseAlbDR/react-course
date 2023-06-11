@@ -29,13 +29,15 @@ function App() {
   const [friends, setFriends] = useState(initialFriends);
   const [showAddFriendForm, setShowAddFriendForm] = useState(false);
   const [showSplitForm, setShowSplitForm] = useState(false);
+  const [selectedFriend, setSelectedFriend] = useState("");
 
   function handleShowAddFriendForm() {
     setShowAddFriendForm(!showAddFriendForm);
   }
 
-  function handleShowSplitForm() {
+  function handleShowSplitForm(friend) {
     setShowSplitForm(!showSplitForm);
+    setSelectedFriend(friend);
   }
 
   function handleAddFriend(friend) {
@@ -49,6 +51,11 @@ function App() {
           {friends.map((friend, index) => (
             <li key={index}>
               <Friend friend={friend} onClick={handleShowSplitForm} />
+              <Button onClick={() => handleShowSplitForm(friend)}>
+                {showSplitForm && selectedFriend.name === friend.name
+                  ? "Close"
+                  : "Select"}
+              </Button>
             </li>
           ))}
         </ul>
@@ -65,7 +72,7 @@ function App() {
           </>
         )}
       </div>
-      <>{showSplitForm && <SplitForm />}</>
+      <>{showSplitForm && <SplitForm friend={selectedFriend} />}</>
     </div>
   );
 }
