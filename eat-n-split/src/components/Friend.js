@@ -1,6 +1,4 @@
-import Button from "./Button";
-
-export default function Friend({ friend }) {
+export default function Friend({ friend, onRemoveFriend }) {
   return (
     <>
       <img src={friend.image} alt={friend.name} />

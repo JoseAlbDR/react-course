@@ -44,7 +44,7 @@ export default function FriendForm({ friend, onUpdateFriend, onToggleForm }) {
         <option value="You">You</option>
         <option value={friend.name}>{friend.name}</option>
       </select>
-      <Button>Split bill</Button>
+      <Button cssClass="button">Split bill</Button>
     </form>
   );
 }

@@ -44,7 +44,7 @@ export default function FriendForm({ onAddFriend, onToggleForm }) {
         value={image}
         fn={setImage}
       />
-      <Button>Add</Button>
+      <Button cssClass="button">Add</Button>
     </form>
   );
 }

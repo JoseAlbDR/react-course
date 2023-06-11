@@ -48,6 +48,11 @@ function App() {
     setFriends((friends) => [...friends, friend]);
   }
 
+  function handleRemoveFriend(id, name) {
+    window.confirm(`Are you sure you want to remove ${name}?`) &&
+      setFriends((friends) => friends.filter((friend) => friend.id !== id));
+  }
+
   function handleUpdateFriend(friendId, amount) {
     setFriends((friends) =>
       friends.map((friend) =>
@@ -64,8 +69,17 @@ function App() {
         <ul>
           {friends.map((friend, index) => (
             <li key={index}>
+              <Button
+                onClick={() => handleRemoveFriend(friend.id, friend.name)}
+                cssClass="remove"
+              >
+                ❌
+              </Button>
               <Friend friend={friend} onClick={handleToggleSplitForm} />
-              <Button onClick={() => handleToggleSplitForm(friend)}>
+              <Button
+                onClick={() => handleToggleSplitForm(friend)}
+                cssClass="button"
+              >
                 {toggleSplitForm && selectedFriend.name === friend.name
                   ? "Close"
                   : "Select"}
@@ -75,14 +89,18 @@ function App() {
         </ul>
 
         {!toggleAddFriendForm ? (
-          <Button onClick={handleToggleAddFriendForm}>Add friend</Button>
+          <Button onClick={handleToggleAddFriendForm} cssClass="button">
+            Add friend
+          </Button>
         ) : (
           <>
             <FriendForm
               onAddFriend={handleAddFriend}
               onToggleForm={handleToggleAddFriendForm}
             />
-            <Button onClick={handleToggleAddFriendForm}>Close</Button>
+            <Button onClick={handleToggleAddFriendForm} cssClass="button">
+              Close
+            </Button>
           </>
         )}
       </div>
