@@ -1,5 +1,6 @@
 import Friend from "./Friend";
 import Button from "./Button";
+import { useState } from "react";
 
 const initialFriends = [
   {
@@ -23,16 +24,22 @@ const initialFriends = [
 ];
 
 function App() {
+  const [friends, setFriends] = useState(initialFriends);
+
+  function handleAddFriend(friend) {
+    setFriends((friends) => [...friends, friend]);
+  }
+
   return (
     <div className="sidebar">
       <ul>
-        {initialFriends.map((friend, index) => (
+        {friends.map((friend, index) => (
           <li key={index}>
             <Friend friend={friend} />
           </li>
         ))}
       </ul>
-      <Button>Add friend</Button>
+      <Button onAddFriend={handleAddFriend}>Add friend</Button>
     </div>
   );
 }
