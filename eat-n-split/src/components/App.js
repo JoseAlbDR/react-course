@@ -1,6 +1,7 @@
 import Friend from "./Friend";
 import Button from "./Button";
-import AddFriend from "./AddFriendForm";
+import FriendForm from "./FriendForm";
+import SplitForm from "./SplitForm";
 import { useState } from "react";
 
 const initialFriends = [
@@ -27,10 +28,14 @@ const initialFriends = [
 function App() {
   const [friends, setFriends] = useState(initialFriends);
   const [showAddFriendForm, setShowAddFriendForm] = useState(false);
-  const [showSplitForm, setSplitForm] = useState(false);
+  const [showSplitForm, setShowSplitForm] = useState(false);
 
   function handleShowAddFriendForm() {
     setShowAddFriendForm(!showAddFriendForm);
+  }
+
+  function handleShowSplitForm() {
+    setShowSplitForm(!showSplitForm);
   }
 
   function handleAddFriend(friend) {
@@ -43,7 +48,7 @@ function App() {
         <ul>
           {friends.map((friend, index) => (
             <li key={index}>
-              <Friend friend={friend} />
+              <Friend friend={friend} onClick={handleShowSplitForm} />
             </li>
           ))}
         </ul>
@@ -52,7 +57,7 @@ function App() {
           <Button onClick={handleShowAddFriendForm}>Add friend</Button>
         ) : (
           <>
-            <AddFriend
+            <FriendForm
               onAddFriend={handleAddFriend}
               onShowForm={handleShowAddFriendForm}
             />
@@ -60,6 +65,7 @@ function App() {
           </>
         )}
       </div>
+      <>{showSplitForm && <SplitForm />}</>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import Button from "./Button";
-
-export default function Friend({ friend }) {
+import { useState } from "react";
+export default function Friend({ friend, onClick }) {
   return (
     <>
       <img src={friend.image} alt={friend.name} />
@@ -16,7 +16,7 @@ export default function Friend({ friend }) {
           You owes {friend.name} {Math.abs(friend.balance)}
         </p>
       )}
-      <Button>Select</Button>
+      <Button onClick={onClick}>Select</Button>
     </>
   );
 }
