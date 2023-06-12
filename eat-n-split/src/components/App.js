@@ -40,20 +40,20 @@ function App() {
     setSelectedFriend(null);
 
     // Show AddFriendForm and hide SplitForm
-    setToggleAddFriendForm(!toggleAddFriendForm);
-    setToggleSplitForm(toggleSplitForm ? !toggleSplitForm : toggleSplitForm);
+    setToggleAddFriendForm((show) => !show);
+    setToggleSplitForm((show) => (show ? !show : show));
   }
 
   function handleToggleSplitForm(friend) {
     // Select button click
     if (selectedFriend === null) {
-      setToggleSplitForm(!toggleSplitForm);
+      setToggleSplitForm((show) => !show);
       setSelectedFriend(friend);
     }
 
     // Close button click
     if (selectedFriend === friend) {
-      setToggleSplitForm(!toggleSplitForm);
+      setToggleSplitForm((show) => !show);
       setSelectedFriend(null);
       // Select another friend while SplitForm is already opened
     } else {
@@ -62,9 +62,7 @@ function App() {
     // selectedFriend === friend && setToggleSplitForm(!toggleSplitForm);
 
     // Show SplitForm and hide AddFriendForm
-    setToggleAddFriendForm(
-      toggleAddFriendForm ? !toggleAddFriendForm : toggleAddFriendForm
-    );
+    setToggleAddFriendForm((show) => (show ? !show : show));
 
     // Set friend Clicked
   }
