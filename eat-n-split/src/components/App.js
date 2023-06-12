@@ -46,9 +46,10 @@ function App() {
   function handleSelectedFriend(friend) {
     // Hide FriendForm
     setToggleAddFriendForm(false);
-    selectedFriend === friend
-      ? setSelectedFriend(null)
-      : setSelectedFriend(friend);
+    setSelectedFriend((curr) => (curr?.id === friend.id ? null : friend));
+    // selectedFriend === friend
+    //   ? setSelectedFriend(null)
+    //   : setSelectedFriend(friend);
   }
   // CRUD
   function handleAddFriend(friend) {

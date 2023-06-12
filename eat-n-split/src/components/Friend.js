@@ -7,7 +7,7 @@ export default function Friend({
 }) {
   return (
     <>
-      <li className={selectedFriend === friend ? "selected" : ""}>
+      <li className={selectedFriend?.id === friend.id ? "selected" : ""}>
         <Button
           onClick={() => onRemoveFriend(friend.id, friend.name)}
           cssClass="remove"
@@ -28,7 +28,7 @@ export default function Friend({
           </p>
         )}
         <Button onClick={() => onSelectedFriend(friend)} cssClass="button">
-          {selectedFriend?.name === friend.name ? "Close" : "Select"}
+          {selectedFriend?.id === friend.id ? "Close" : "Select"}
         </Button>
       </li>
     </>
