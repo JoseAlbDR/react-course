@@ -28,6 +28,8 @@ const initialFriends = [
 function App() {
   // Friends CRUD state
   const [friends, setFriends] = useState(initialFriends);
+
+  // Toggle forms
   const [toggleAddFriendForm, setToggleAddFriendForm] = useState(false);
   const [toggleSplitForm, setToggleSplitForm] = useState(false);
 

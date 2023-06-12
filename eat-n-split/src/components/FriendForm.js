@@ -11,10 +11,12 @@ export default function FriendForm({ onAddFriend, onToggleForm }) {
 
     if (!name) return;
 
+    // Random Img if not set
     const randomImg = `https://i.pravatar.cc/48?u=${Math.floor(
       Math.random() * 1000000 + 1
     )}`;
 
+    // Add newFriend
     const newFriend = {
       name,
       image: image ? image : randomImg,
