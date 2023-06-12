@@ -36,13 +36,20 @@ function App() {
   const [selectedFriend, setSelectedFriend] = useState(null);
 
   function handleToggleAddFriendForm() {
-    setSelectedFriend(null);
-
     // Show AddFriendForm and hide SplitForm
     setToggleAddFriendForm((show) => !show);
+
+    // Set selectedFriedn to null to hide SplitForm
     setSelectedFriend(null);
   }
 
+  function handleSelectedFriend(friend) {
+    // Hide FriendForm
+    setToggleAddFriendForm(false);
+    selectedFriend === friend
+      ? setSelectedFriend(null)
+      : setSelectedFriend(friend);
+  }
   // CRUD
   function handleAddFriend(friend) {
     setFriends((friends) => [...friends, friend]);
@@ -73,7 +80,7 @@ function App() {
         <FriendList
           friends={friends}
           onRemoveFriend={handleRemoveFriend}
-          onSelectedFriend={setSelectedFriend}
+          onSelectedFriend={handleSelectedFriend}
           selectedFriend={selectedFriend}
         />
         {/* FriendForm */}
