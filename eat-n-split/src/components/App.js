@@ -26,24 +26,37 @@ const initialFriends = [
 ];
 
 function App() {
+  // Friends CRUD state
   const [friends, setFriends] = useState(initialFriends);
   const [toggleAddFriendForm, setToggleAddFriendForm] = useState(false);
   const [toggleSplitForm, setToggleSplitForm] = useState(false);
-  const [selectedFriend, setSelectedFriend] = useState("");
+
+  // Selected friend state to show in SplitForm
+  const [selectedFriend, setSelectedFriend] = useState(null);
 
   function handleToggleAddFriendForm() {
+    setSelectedFriend(null);
+
+    // Show AddFriendForm and hide SplitForm
     setToggleAddFriendForm(!toggleAddFriendForm);
     setToggleSplitForm(toggleSplitForm ? !toggleSplitForm : toggleSplitForm);
   }
 
   function handleToggleSplitForm(friend) {
-    setToggleSplitForm(!toggleSplitForm);
+    // Select button
+    selectedFriend === null && setToggleSplitForm(!toggleSplitForm);
+
+    // Close button
+    selectedFriend === friend && setToggleSplitForm(!toggleSplitForm);
+
+    // Show SplitForm and hide AddFriendForm
     setToggleAddFriendForm(
       toggleAddFriendForm ? !toggleAddFriendForm : toggleAddFriendForm
     );
     setSelectedFriend(friend);
   }
 
+  // CRUD
   function handleAddFriend(friend) {
     setFriends((friends) => [...friends, friend]);
   }
@@ -54,6 +67,7 @@ function App() {
   }
 
   function handleUpdateFriend(friendId, amount) {
+    setSelectedFriend(null);
     setFriends((friends) =>
       friends.map((friend) =>
         friend.id === friendId
