@@ -1,4 +1,3 @@
-import Button from "./Button";
 import Friend from "./Friend";
 export default function FriendList({
   friends,
@@ -16,6 +15,7 @@ export default function FriendList({
           onToggleSplitForm={onToggleSplitForm}
           toggleSplitForm={toggleSplitForm}
           selectedFriend={selectedFriend}
+          onRemoveFriend={onRemoveFriend}
         />
       ))}
     </ul>
