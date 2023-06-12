@@ -8,7 +8,7 @@ export default function FriendForm({ friend, onUpdateFriend }) {
   const [whoPays, setWhoPays] = useState("You");
 
   // Owes Calcs
-  const friendExpense = billValue - myExpense;
+  const friendExpense = billValue > myExpense ? billValue - myExpense : 0;
   const amount = whoPays === "You" ? +friendExpense : -+myExpense;
 
   // Update friend and close SplitForm
@@ -16,7 +16,7 @@ export default function FriendForm({ friend, onUpdateFriend }) {
     event.preventDefault();
 
     // Dont update friend until billValue is set
-    if (!billValue) return;
+    if (!billValue || billValue < myExpense) return;
     onUpdateFriend(friend.id, amount);
   }
 
