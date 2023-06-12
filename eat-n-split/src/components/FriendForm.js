@@ -2,7 +2,7 @@ import Button from "./Button";
 import Input from "./Input";
 import { useState } from "react";
 
-export default function FriendForm({ onAddFriend, onToggleForm }) {
+export default function FriendForm({ onAddFriend }) {
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
 
@@ -22,7 +22,7 @@ export default function FriendForm({ onAddFriend, onToggleForm }) {
       id: Date.now(),
     };
     onAddFriend(newFriend);
-    onToggleForm();
+
     setName("");
     setImage("");
   }

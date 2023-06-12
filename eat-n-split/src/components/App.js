@@ -70,6 +70,7 @@ function App() {
   // CRUD
   function handleAddFriend(friend) {
     setFriends((friends) => [...friends, friend]);
+    setToggleAddFriendForm(false);
   }
 
   function handleRemoveFriend(id, name) {
@@ -86,6 +87,7 @@ function App() {
           : friend
       )
     );
+    setToggleSplitForm(false);
   }
 
   return (
@@ -100,12 +102,7 @@ function App() {
           selectedFriend={selectedFriend}
         />
         {/* FriendForm */}
-        {toggleAddFriendForm && (
-          <FriendForm
-            onAddFriend={handleAddFriend}
-            onToggleForm={handleToggleAddFriendForm}
-          />
-        )}
+        {toggleAddFriendForm && <FriendForm onAddFriend={handleAddFriend} />}
         <Button onClick={handleToggleAddFriendForm} cssClass="button">
           {!toggleAddFriendForm ? "Add friend" : "Close"}
         </Button>
@@ -116,7 +113,6 @@ function App() {
           <SplitForm
             friend={selectedFriend}
             onUpdateFriend={handleUpdateFriend}
-            onToggleForm={setToggleSplitForm}
           />
         )}
       </>

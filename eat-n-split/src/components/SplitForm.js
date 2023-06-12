@@ -2,7 +2,7 @@ import Button from "./Button";
 import Input from "./Input";
 import { useState } from "react";
 
-export default function FriendForm({ friend, onUpdateFriend, onToggleForm }) {
+export default function FriendForm({ friend, onUpdateFriend }) {
   const [billValue, setBillValue] = useState(0);
   const [myExpense, setMyExpense] = useState(0);
   const [whoPays, setWhoPays] = useState("You");
@@ -19,7 +19,6 @@ export default function FriendForm({ friend, onUpdateFriend, onToggleForm }) {
     // Dont update friend until billValue is set
     if (!billValue) return;
     onUpdateFriend(friend.id, amount);
-    onToggleForm(false);
   }
 
   return (
