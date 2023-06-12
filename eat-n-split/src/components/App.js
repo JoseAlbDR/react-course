@@ -99,22 +99,16 @@ function App() {
           toggleSplitForm={toggleSplitForm}
           selectedFriend={selectedFriend}
         />
-        {/* AddFriendForm */}
-        {!toggleAddFriendForm ? (
-          <Button onClick={handleToggleAddFriendForm} cssClass="button">
-            Add friend
-          </Button>
-        ) : (
-          <>
-            <FriendForm
-              onAddFriend={handleAddFriend}
-              onToggleForm={handleToggleAddFriendForm}
-            />
-            <Button onClick={handleToggleAddFriendForm} cssClass="button">
-              Close
-            </Button>
-          </>
+        {/* FriendForm */}
+        {toggleAddFriendForm && (
+          <FriendForm
+            onAddFriend={handleAddFriend}
+            onToggleForm={handleToggleAddFriendForm}
+          />
         )}
+        <Button onClick={handleToggleAddFriendForm} cssClass="button">
+          {!toggleAddFriendForm ? "Add friend" : "Close"}
+        </Button>
       </div>
       {/* SplitForm */}
       <>
