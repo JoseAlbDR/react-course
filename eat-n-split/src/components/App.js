@@ -43,16 +43,18 @@ function App() {
   }
 
   function handleToggleSplitForm(friend) {
-    // Select button
+    // Select button click
     selectedFriend === null && setToggleSplitForm(!toggleSplitForm);
 
-    // Close button
+    // Close button click
     selectedFriend === friend && setToggleSplitForm(!toggleSplitForm);
 
     // Show SplitForm and hide AddFriendForm
     setToggleAddFriendForm(
       toggleAddFriendForm ? !toggleAddFriendForm : toggleAddFriendForm
     );
+
+    // Set friend Clicked
     setSelectedFriend(friend);
   }
 
@@ -80,6 +82,7 @@ function App() {
   return (
     <div className="app">
       <div className="sidebar">
+        {/* Friend List */}
         <ul>
           {friends.map((friend, index) => (
             <li key={index}>
@@ -101,7 +104,7 @@ function App() {
             </li>
           ))}
         </ul>
-
+        {/* AddFriendForm */}
         {!toggleAddFriendForm ? (
           <Button onClick={handleToggleAddFriendForm} cssClass="button">
             Add friend
@@ -118,6 +121,7 @@ function App() {
           </>
         )}
       </div>
+      {/* SplitForm */}
       <>
         {toggleSplitForm && (
           <SplitForm
