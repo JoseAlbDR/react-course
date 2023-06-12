@@ -29,7 +29,7 @@ function App() {
   // Friends CRUD state
   const [friends, setFriends] = useState(initialFriends);
 
-  // Toggle forms
+  // Toggle form
   const [toggleAddFriendForm, setToggleAddFriendForm] = useState(false);
 
   // Selected friend state to show in SplitForm
@@ -63,7 +63,6 @@ function App() {
   }
 
   function handleUpdateFriend(friendId, amount) {
-    setSelectedFriend(null);
     setFriends((friends) =>
       friends.map((friend) =>
         friend.id === friendId

@@ -8,9 +8,8 @@ export default function FriendForm({ friend, onUpdateFriend }) {
   const [whoPays, setWhoPays] = useState("You");
 
   // Owes Calcs
-  const friendExpense = +billValue - +myExpense;
-  const amount =
-    whoPays === "You" ? +billValue - +myExpense : +friendExpense - +billValue;
+  const friendExpense = billValue - myExpense;
+  const amount = whoPays === "You" ? +friendExpense : -+myExpense;
 
   // Update friend and close SplitForm
   function handleSplitForm(event) {
