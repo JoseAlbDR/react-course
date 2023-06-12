@@ -25,7 +25,7 @@ export default function Friend({
         )}
         {friend.balance < 0 && (
           <p className="red">
-            You owes {friend.name} {Math.abs(friend.balance)}€
+            You owe {friend.name} {Math.abs(friend.balance)}€
           </p>
         )}
         <Button onClick={() => onToggleSplitForm(friend)} cssClass="button">
