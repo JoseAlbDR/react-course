@@ -31,7 +31,6 @@ function App() {
 
   // Toggle forms
   const [toggleAddFriendForm, setToggleAddFriendForm] = useState(false);
-  const [toggleSplitForm, setToggleSplitForm] = useState(false);
 
   // Selected friend state to show in SplitForm
   const [selectedFriend, setSelectedFriend] = useState(null);
@@ -41,30 +40,7 @@ function App() {
 
     // Show AddFriendForm and hide SplitForm
     setToggleAddFriendForm((show) => !show);
-    setToggleSplitForm((show) => (show ? !show : show));
-  }
-
-  function handleToggleSplitForm(friend) {
-    // Select button click
-    if (selectedFriend === null) {
-      setToggleSplitForm((show) => !show);
-      setSelectedFriend(friend);
-    }
-
-    // Close button click
-    if (selectedFriend === friend) {
-      setToggleSplitForm((show) => !show);
-      setSelectedFriend(null);
-      // Select another friend while SplitForm is already opened
-    } else {
-      setSelectedFriend(friend);
-    }
-    // selectedFriend === friend && setToggleSplitForm(!toggleSplitForm);
-
-    // Show SplitForm and hide AddFriendForm
-    setToggleAddFriendForm((show) => (show ? !show : show));
-
-    // Set friend Clicked
+    setSelectedFriend(null);
   }
 
   // CRUD
@@ -87,7 +63,7 @@ function App() {
           : friend
       )
     );
-    setToggleSplitForm(false);
+    setSelectedFriend(null);
   }
 
   return (
@@ -97,8 +73,7 @@ function App() {
         <FriendList
           friends={friends}
           onRemoveFriend={handleRemoveFriend}
-          onToggleSplitForm={handleToggleSplitForm}
-          toggleSplitForm={toggleSplitForm}
+          onSelectedFriend={setSelectedFriend}
           selectedFriend={selectedFriend}
         />
         {/* FriendForm */}
@@ -109,7 +84,7 @@ function App() {
       </div>
       {/* SplitForm */}
       <>
-        {toggleSplitForm && (
+        {selectedFriend && (
           <SplitForm
             friend={selectedFriend}
             onUpdateFriend={handleUpdateFriend}

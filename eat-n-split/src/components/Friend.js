@@ -2,8 +2,7 @@ import Button from "./Button";
 export default function Friend({
   friend,
   onRemoveFriend,
-  onToggleSplitForm,
-  toggleSplitForm,
+  onSelectedFriend,
   selectedFriend,
 }) {
   return (
@@ -28,10 +27,8 @@ export default function Friend({
             You owe {friend.name} {Math.abs(friend.balance)}€
           </p>
         )}
-        <Button onClick={() => onToggleSplitForm(friend)} cssClass="button">
-          {toggleSplitForm && selectedFriend.name === friend.name
-            ? "Close"
-            : "Select"}
+        <Button onClick={() => onSelectedFriend(friend)} cssClass="button">
+          {selectedFriend?.name === friend.name ? "Close" : "Select"}
         </Button>
       </li>
     </>

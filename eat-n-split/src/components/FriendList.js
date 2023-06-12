@@ -2,8 +2,7 @@ import Friend from "./Friend";
 export default function FriendList({
   friends,
   onRemoveFriend,
-  onToggleSplitForm,
-  toggleSplitForm,
+  onSelectedFriend,
   selectedFriend,
 }) {
   return (
@@ -12,8 +11,7 @@ export default function FriendList({
         <Friend
           key={friend.id}
           friend={friend}
-          onToggleSplitForm={onToggleSplitForm}
-          toggleSplitForm={toggleSplitForm}
+          onSelectedFriend={onSelectedFriend}
           selectedFriend={selectedFriend}
           onRemoveFriend={onRemoveFriend}
         />
