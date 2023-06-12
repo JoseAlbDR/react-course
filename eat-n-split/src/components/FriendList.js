@@ -9,8 +9,8 @@ export default function FriendList({
 }) {
   return (
     <ul>
-      {friends.map((friend, index) => (
-        <li key={index}>
+      {friends.map((friend) => (
+        <li key={friend.id}>
           <Button
             onClick={() => onRemoveFriend(friend.id, friend.name)}
             cssClass="remove"
