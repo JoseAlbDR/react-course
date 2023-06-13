@@ -63,6 +63,8 @@ function App() {
   }
 
   function handleUpdateFriend(friendId, amount) {
+    console.log(friendId);
+    console.log(amount);
     setFriends((friends) =>
       friends.map((friend) =>
         friend.id === friendId
