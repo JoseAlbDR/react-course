@@ -9,7 +9,7 @@ export default function FriendForm({ friend, onUpdateFriend }) {
 
   // Owes Calcs
   const friendExpense = billValue - myExpense;
-  console.log(friendExpense);
+
   const amount = whoPays === "You" ? +friendExpense : -+myExpense;
 
   // Update friend and close SplitForm
@@ -17,7 +17,7 @@ export default function FriendForm({ friend, onUpdateFriend }) {
     event.preventDefault();
 
     // Dont update friend until billValue is set
-    if (!billValue) return;
+    if (!billValue || friendExpense < 0) return;
     onUpdateFriend(friend.id, amount);
   }
 
