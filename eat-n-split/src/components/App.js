@@ -95,6 +95,7 @@ function App() {
           <SplitForm
             friend={selectedFriend}
             onUpdateFriend={handleUpdateFriend}
+            key={selectedFriend.name}
           />
         )}
       </>
