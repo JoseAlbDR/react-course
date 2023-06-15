@@ -90,15 +90,14 @@ function App() {
         </Button>
       </div>
       {/* SplitForm */}
-      <>
-        {selectedFriend && (
-          <SplitForm
-            friend={selectedFriend}
-            onUpdateFriend={handleUpdateFriend}
-            key={selectedFriend.name}
-          />
-        )}
-      </>
+
+      {selectedFriend && (
+        <SplitForm
+          friend={selectedFriend}
+          onUpdateFriend={handleUpdateFriend}
+          key={selectedFriend.id}
+        />
+      )}
     </div>
   );
 }
