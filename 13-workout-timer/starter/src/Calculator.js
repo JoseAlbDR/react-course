@@ -10,6 +10,7 @@ function Calculator({ workouts, allowSound }) {
 
   useEffect(() => {
     setDuration((number * sets * speed) / 60 + (sets - 1) * durationBreak);
+    playSound();
   }, [number, sets, speed, durationBreak]);
 
   // const duration = (number * sets * speed) / 60 + (sets - 1) * durationBreak;
@@ -73,7 +74,8 @@ function Calculator({ workouts, allowSound }) {
       <section>
         <button
           onClick={() => {
-            setDuration((duration) => duration - 1);
+            setDuration((duration) => (duration === 0 ? 0 : duration - 1));
+            playSound();
           }}
         >
           –
@@ -86,6 +88,7 @@ function Calculator({ workouts, allowSound }) {
         <button
           onClick={() => {
             setDuration((duration) => duration + 1);
+            playSound();
           }}
         >
           +
